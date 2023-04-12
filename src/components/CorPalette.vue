@@ -1,28 +1,27 @@
 <template>
   <div class="palette">
-    <div v-for="color in colors" :style="{ backgroundColor: color }" @click="selectColor(color)"></div>
-  </div>
+    <!-- <div v-for="color in colors" :style="{ backgroundColor: color }" @click="selectColor(color)"></div> -->
+    <input type="color" shape="poly" name="color" ref="colorDiv" @change="event => selectColor(event)">
+</div>
 </template>
 
 <script>
 export default {
   props: {
-    colors: {
-      type: Array,
-      default: () => ["#ffffff", "#000000", "#ff0000", "#00ff00", "#0000ff"],
-    },
     selectedColor: {
-      type: String,
       default: "#000000",
     },
   },
+
   methods: {
-    selectColor(color) {
+    selectColor(event) {
+      let color = event.target.value
       this.$emit("selectColor", color);
     },
   },
 };
 </script>
+
 
 <style>
 .palette {
