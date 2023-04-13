@@ -9,6 +9,7 @@ export default {
       type: String,
       default: "#ffffff",
     },
+    pixelSize: 0
   },
   data() {
     return {
@@ -31,8 +32,10 @@ export default {
       const color = event.buttons === 1 ? this.selectedColor : "#ffffff";
       const pixel = document.createElement("div");
       pixel.style.backgroundColor = color;
-      pixel.style.width = "10px";
-      pixel.style.height = "10px";
+
+      pixel.style.width = this.pixelSize.toString() + "px";
+      pixel.style.height = this.pixelSize.toString() + "px";
+
       pixel.style.position = "absolute";
       pixel.style.left = x + "px";
       pixel.style.top = y + "px";
@@ -45,7 +48,8 @@ export default {
 <style>
 .draw-board {
   width: 900px;
-  height: 900px;
+  height: 1150px;
+  top: 15px;
   position: relative;
   border: 2px solid #000000;
   background-color: white;
